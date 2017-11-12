@@ -4,6 +4,8 @@
 
 <a href="#usageInst"> Usage Instructions </a>
 
+<a href="#unitTests"> Unit Tests </a>
+
 <a href="#limitations"> Limitations </a>
 
 <a href="#comments"> Comments </a>
@@ -41,7 +43,7 @@ Aim of this algorithm is to improve naive brute-force algorithm by reducing the 
 Windows CMD: <i>set CLASSPATH = %classpath%;/some/directory/</i><br/>
 Unix Terminal: <i>export CLASSPATH = $CLASSPATH:/some/directory/</i><br/>
 * Navigate to the closestpair folder in which the source files are located and compile the java source files.<br/>
-Command: <i>javac *.java</i>
+Command: <i>javac Main.java Point.java ClosestPair.java CoordinateBasedComparator.java</i>
 
 * There are 3 different configuration to run this program:<br/>
     Command: <i>java closestpair.Main [|1|2] [|input file location] [|output file location] </i><br/>
@@ -54,6 +56,20 @@ Command: <i>javac *.java</i>
     3) <i>java closestpair.Main 2 "/some/directory/input_file_location" "/some/directory/output_file_location"</i> <br/>
                 * If the first argument is 2, then the divide-and-conquer algorithm will be used. Second argument will be the input location and the third will be the output location. <br/>
 
+<a name="unitTests"></a>
+# Unit Test
+There are 2 different unit test classes under closestpair directory. ClosestPairTestBruteForce.java tests the brute-force algorithm and ClosestPairTestDivideandConquer.java tests the divide-and-conquer algorithm. This two files test the 9 sample input files and their corresponding sample output files located under InputTestFiles and OutputTestFiles directories.<br/>
+<b>How to use unit tests from command line:</b><br/>
+* In the beginning, classpath should be set to the directory where closestpair, InputTestFiles and OutputTestFiles are located and also junit.jar file should be added to the classpath.<br/>
+Windows CMD: <i>set CLASSPATH = %classpath%;/some/directory/;/some/directory/junit4-4.8.2.jar</i><br/>
+Unix Terminal: <i>export CLASSPATH = $CLASSPATH:/some/directory/:/some/directory/junit4-4.8.2.jar</i><br/>
+* After setting the classpath, navigate to the closestpair directory where source and unit test files are located and compile all files.<br/>
+Command: <i> javac *.java </i>
+* After compiling the source files and unit tests, navigate to the directory where closestpair directory is located and execute one of the tests.<br/>
+Command:<br/> 
+            - <i>java -cp .:/some/directory/closestpair/junit4-4.8.2.jar org.junit.runner.JUnitCore closestpair.ClosestPairTestBruteForce </i><br/>
+            - <i>java -cp .:/some/directory/closestpair/junit4-4.8.2.jar org.junit.runner.JUnitCore closestpair.ClosestPairTestBruteForce </i><br/>
+
 <a name="limitations"></a>
 # Limitations
 * Input text file should contain one point per line. For every line, coordinate values should be separated by "\t". For every point, input file should contain exactly same number of coordinates.
@@ -61,7 +77,8 @@ Command: <i>javac *.java</i>
 * If program will be run without command line arguments then ../InputTestFiles/sample_input_91_732.tsv should exists, if it doesn't exist then program crashes.
 * There is no restriction for dimension.
 * There is no maximum limit for points.
-* To run the program with command line arguments there should be exactly two arguments provided. First one should be input file location and the second one should be output file location.
+* To run the program with command line arguments there should be exactly three arguments provided. First one should be algorithm choice, the second one should be input file location and the last one should be output file location.
+* Unit tests uses all the input and output files in this repository to test the program, if any of the input or output files will be missing then tests will crash.
 
 <a name="comments"></a>
 # Comments
